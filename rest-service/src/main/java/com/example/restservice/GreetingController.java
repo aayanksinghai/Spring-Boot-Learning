@@ -3,6 +3,7 @@ package com.example.restservice;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,15 @@ public class GreetingController {
 	@GetMapping("/details")
 	public Greeting greeting(@RequestParam(value= "name", defaultValue = "World") String name)
 	{
+		
 		return new Greeting(counter.incrementAndGet(),String.format(text, name));
 	}
 
+	@PostMapping("/details")
+	public Greeting greet(@RequestParam(value= "name", defaultValue = "World") String name)
+	{
+		
+		return new Greeting(counter.incrementAndGet(),String.format(text, name));
+	}
+	
 }
