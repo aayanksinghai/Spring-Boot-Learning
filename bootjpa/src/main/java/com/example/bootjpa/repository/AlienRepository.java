@@ -1,13 +1,14 @@
 package com.example.bootjpa.repository;
 
-import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
 
 import com.example.bootjpa.model.Alien;
 
-public interface AlienRepository extends CrudRepository<Alien, Integer> 
+public interface AlienRepository extends JpaRepository<Alien, Integer> 
 {
 	/*
 	List<Alien> findByTech(String tech);
