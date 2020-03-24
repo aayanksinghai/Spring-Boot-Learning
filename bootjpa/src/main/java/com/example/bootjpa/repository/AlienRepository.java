@@ -9,6 +9,7 @@ import com.example.bootjpa.model.Alien;
 
 public interface AlienRepository extends CrudRepository<Alien, Integer> 
 {
+	/*
 	List<Alien> findByTech(String tech);
 	List<Alien> findByAidGreaterThan(int aid);
 	List<Alien> findByAidLessThan(int aid);
@@ -17,6 +18,6 @@ public interface AlienRepository extends CrudRepository<Alien, Integer>
 	
 	@Query("from Alien where tech=?1 order by aname")
 	List<Alien> findByTechSorted(String tech);
-
+*/
 	
 }
