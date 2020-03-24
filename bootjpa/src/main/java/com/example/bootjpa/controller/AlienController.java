@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,32 +49,47 @@ public class AlienController
 		return alien;
 	}
 	
-	@GetMapping(path="/aliens")
+	@DeleteMapping("/alien/{aid}")
+	public String deleteAliens(@PathVariable int aid)
+	{ 
+		Alien a = repo.getOne(aid);
+		repo.delete(a);
+		return "deleted";
+		
+	}
+	
+	@GetMapping(path="/alien")
 	public List<Alien> getAliens()
 	{
 		return repo.findAll();
 	}
 	
+	@PutMapping(path="/alien", consumes = {"application/json"})
+	public Alien updateAlien(@RequestBody Alien alien)
+	{
+		repo.save(alien);
+		return alien;
+	}
+	
+	/*
 	@RequestMapping("/alien/{aid}")
 	@ResponseBody
 	public Optional<Alien> getAlien(@PathVariable("aid") int aid)
 	{
-		
 		return repo.findById(aid);
-		
-		
-		
 	}
+	*/
 	
-	
+	/*
 	@RequestMapping("/deleteAlien")
 	public String deleteAlien(@RequestParam int aid)
 	{
 		
 		repo.deleteById(aid);
 		return "delete.jsp";
-	}
+	}*/
 	
+	/*
 	@RequestMapping("/updateAlien")
 	public String updateAlien(@RequestParam int aid, Alien alien)
 	{
@@ -80,7 +97,7 @@ public class AlienController
 		repo.save(alien);
 		return "update.jsp";
 	}
-	
+	*/
 		
 }
 
